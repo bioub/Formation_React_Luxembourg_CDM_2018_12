@@ -10,20 +10,11 @@ class TodoForm extends Component {
     text: PropTypes.string
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.props.dispatch(todoAdd({text: this.props.text, done: false}));
-  };
-
-  handleChange = (event) => {
-    this.props.dispatch(todoChange(event.target.value));
-  };
-
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={(event) => this.props.handleSubmit(event, this.props.text)}>
         <input type="checkbox" />
-        <input name="todo" value={this.props.text} onChange={this.handleChange}/>
+        <input name="todo" value={this.props.text} onChange={this.props.handleChange}/>
         <button>+</button>
       </form>
     );
@@ -38,4 +29,14 @@ const mapStateToProps = (state) => ({
   text: selectNewTodo(state),
 });
 
-export default connect(mapStateToProps)(TodoForm);
+const mapDispatchToProps = (dispatch, ow) => ({
+  handleSubmit: (event, text) => {
+    event.preventDefault();
+    dispatch(todoAdd({text, done: false}));
+  },
+  handleChange: (event) => {
+    dispatch(todoChange(event.target.value));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
