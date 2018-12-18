@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import desactivable from './Desactivable';
 
 export default class Counter extends Component {
 
@@ -20,6 +21,8 @@ export default class Counter extends Component {
     )
   }
 }
+
+export const DesactivableCounter = desactivable(Counter);
 
 /*
 export default class Counter extends Component {

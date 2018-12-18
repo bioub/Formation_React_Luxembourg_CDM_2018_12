@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import desactivable from './Desactivable';
 
 class Clock extends Component {
   constructor() {
     super();
-    
+
     this.state = {
       now: new Date(),
       format: 'HH:mm:ss',
@@ -30,3 +31,5 @@ class Clock extends Component {
 }
 
 export default Clock;
+
+export const DesactivableClock = desactivable(Clock);
