@@ -8,6 +8,12 @@
 		},
 		{
 			"path": "language"
+		},
+		{
+			"path": "hello-redux"
+		},
+		{
+			"path": "todo-redux"
 		}
 	],
 	"settings": {}
